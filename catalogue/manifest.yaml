@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: catalogue
-        image: maheswari450/catalogue-optimise
+        image: maheswari450/catalogue-optimise:v1
         envFrom:
         - configMapRef:
             name: catalogue
@@ -55,6 +55,3 @@ spec:
     - protocol: TCP
       port: 8080 #service port
       targetPort: 8080 # container port
-
-    
-      
