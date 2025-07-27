@@ -30,6 +30,10 @@ spec:
       tier: app
   template:
     metadata:
+      labels: 
+        project: roboshop
+        component: cart 
+        tier: app
       containers:
       - name: cart
         image: maheswari450/cart:v1
