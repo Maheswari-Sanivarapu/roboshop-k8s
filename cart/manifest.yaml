@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
       - name: cart
-        image: maheswari450/cart:v1
+        image: maheswari450/cart-optimise:v1
         envFrom:
           - configMapRef:
               name: cart

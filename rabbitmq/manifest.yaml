@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: rabbitmq
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      project: roboshop
+      component: rabbitmq
+      tier: database
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: rabbitmq
+        tier: database
+    spec:
+      containers:
+      - name: shipping
+        image: mah
