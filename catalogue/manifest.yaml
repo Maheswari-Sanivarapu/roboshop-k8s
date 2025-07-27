@@ -1,0 +1,57 @@
+apiversion : v1 
+kind: ConfigMap
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels:
+    component: catalogue
+    project: roboshop
+    tier: app 
+data: 
+    MONGO: "true" 
+    MONGO_URL: "mongodb://mongodb:27017/catalogue"
+---
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: roboshop
+  labels: # deployment labels
+    component: catalogue
+    project: roboshop
+    tier: app 
+spec: 
+  replicas: 1
+  selector: # replicaset labels to create the pods it should match with pod labels
+    matchLabels:
+      component: catalogue
+      project: roboshop
+      tier: app 
+  template:
+    metadata:
+      labels: # pod labels
+        component: catalogue
+        project: roboshop
+        tier: app 
+    spec:
+      containers:
+      - name: catalogue
+        image: maheswari450/catalogue-optimise
+---
+apiversion: v1 
+kind: Service
+metadata:
+  name: catalogue
+  namespace: roboshop
+spec:
+  selector:
+    component: catalogue
+    project: roboshop
+    tier: app 
+  ports:
+    - protocol: TCP
+      port: 8080 #service port
+      targetPort: 8080 # container port
+
+    
+      
