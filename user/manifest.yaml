@@ -46,6 +46,7 @@ kind: Service
 metadata:
   name: user
   namespace: roboshop
+spec: 
   selector:
     component: user
     project: roboshop
