@@ -38,11 +38,13 @@ metadata:
     tier: app
 spec:
   replicas: 1
+   # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
       project: roboshop
       component: payment
       tier: app
+    # This is pod definition
   template:
     metadata:
       labels:
