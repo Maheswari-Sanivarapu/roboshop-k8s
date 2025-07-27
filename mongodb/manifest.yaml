@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: maheswari450/mongodb-optimise
+        image: maheswari450/mongodb-optimise:v1
 ---
 apiversion : v1 
 kind: Service
