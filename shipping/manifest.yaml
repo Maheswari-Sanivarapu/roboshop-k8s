@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
         - name: shipping
-          image: maheswari450/shipping:v1
+          image: maheswari450/shipping-optimise:v1
           envFrom:
             - configMapRef:
                 name: shipping
