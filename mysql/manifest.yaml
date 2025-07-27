@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    component: mysql
+    project: roboshop
+    tier: databases
+data: 
+  MYSQL_ROOT_PASSWORD: Um9ib1Nob3BAMQ==
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    component: mysql
+    project: roboshop
+    tier: databases
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: mysql
+      project: roboshop
+      tier: databases
+  template:
+    metadata:
+      labels:
+        component: mysql
+        project: roboshop
+        tier: databases
+    spec:
+      containers:
+      - name: mysql
+        image: maheswari450/mysql-optimise:v1
+        envFrom:
+          - secretRef:
+              name: mysql
+---
+apiVersion: v1 
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop
+spec:
+  selector:
+    component: mysql
+    project: roboshop
+    tier: databases
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
