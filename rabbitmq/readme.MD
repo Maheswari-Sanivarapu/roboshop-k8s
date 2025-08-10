@@ -1,0 +1,6 @@
+1. In this rabbitmq we are creating the pod which is smallest deployment unit and inside the pod the container is created, the container consists of base image of our application we are taking the image-name here as rabbitmq:3 from docker hub and adding the image-name inside container 
+2. creating the replicas here like if we keep replicas as 1 only one pod will run and if we delete the pod the replica will create the new pod again so here replica here is used to match the pods mentioned in replicas. to create replicas pod labels should match with replicas than only replicas will be created
+3. creating the deployment here and attaching the replicas and pods to it so here deployment is used bcoz it will be updated with the latest images if there is any change in the image using pods the image will not be updated automatically,replicaset will use the old image for the pod
+4. in order to make pod to pod communication we are creating the service and adding the port of rabbitmq inside service and databases should not be exposed to outside world so we are not giving any type of service name like loadbalancer,NodePort
+5. here we need username and password for rabbitmq so we are creating the secrets using secrets we can encrypt the username and password and passing the values using secretRef inside the container 
+6. keeping the resource in roboshop namespace here
